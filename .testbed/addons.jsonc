@@ -1,0 +1,29 @@
+{
+  "$schema": "https://chickensoft.games/schemas/addons.schema.json",
+  "addons": {
+    // Batch 2 pins the foundational core contract for UI-shell work.
+    "aerobeat-core": {
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-core.git",
+      "checkout": "v0.1.0",
+      "subfolder": "/"
+    },
+    // Batch 2 pins the shared UI logic contract for shell integration.
+    "aerobeat-ui-core": {
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-ui-core.git",
+      "checkout": "v0.1.1",
+      "subfolder": "/"
+    },
+    // Batch 2 pins the stable community UI kit contract for shell composition.
+    "aerobeat-ui-kit-community": {
+      "url": "git@github.com:AeroBeat-Workouts/aerobeat-ui-kit-community.git",
+      "checkout": "v0.1.1",
+      "subfolder": "/"
+    },
+    // GUT drives the repo-local test suite inside the hidden testbed/workbench.
+    "gut": {
+      "url": "git@github.com:bitwes/Gut.git",
+      "checkout": "main",
+      "subfolder": "/addons/gut"
+    }
+  }
+}
