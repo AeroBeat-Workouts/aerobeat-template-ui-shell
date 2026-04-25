@@ -7,9 +7,9 @@ This is the official template for creating a **UI Shell** repository within the 
 *   **Type:** UI Shell
 *   **License:** **GNU GPLv3** (Strict Copyleft)
 *   **Dependencies:**
-    *   `aerobeat-core` (Required foundation)
     *   `aerobeat-ui-core` (Required UI logic contract)
     *   `aerobeat-ui-kit-community` (Pinned visual layer)
+    *   Additional lane/core repos only when the shell actually consumes them
 
 ## GodotEnv development flow
 
@@ -32,7 +32,7 @@ cd .testbed
 godotenv addons install
 ```
 
-That installs the pinned `aerobeat-core`, `aerobeat-ui-core`, `aerobeat-ui-kit-community`, and GUT into `.testbed/addons/`.
+That restores this repo's current dev/test manifest into `.testbed/addons/`. Canonically, UI shell repos should describe themselves around `aerobeat-ui-core` plus the concrete UI kit and any other lane repos the shell actually consumes.
 
 ### Open the workbench
 
@@ -66,6 +66,7 @@ godot --headless --path .testbed --script addons/gut/gut_cmdln.gd \
 ### Validation notes
 
 - `.testbed/addons.jsonc` is the committed dev/test dependency contract.
-- The manifest pins `aerobeat-core` to `v0.1.0`, `aerobeat-ui-core` to `v0.1.1`, and `aerobeat-ui-kit-community` to `v0.1.1`.
+- The current manifest still pins the transition-era `aerobeat-core` package key alongside `aerobeat-ui-core` and `aerobeat-ui-kit-community`. Treat that old core pin as bootstrap-state drift rather than the canonical lane model.
+- Canonical shared dependency language for UI shell repos is `aerobeat-ui-core` plus the concrete UI kit and any additional lane repos the shell actually consumes.
 - Repo-local unit tests live under `.testbed/tests/`; this repo's current package payload is rooted at `/`, so the workbench does not ship a `.testbed/src` bridge for this subset.
 - The current package shape is consumed from the repo root (`subfolder: "/"`) for downstream installs.
