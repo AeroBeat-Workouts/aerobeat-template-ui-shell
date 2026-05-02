@@ -1,15 +1,23 @@
 # AeroBeat UI Shell Template
 
-This is the official template for creating a **UI Shell** repository within the AeroBeat ecosystem.
+This is the official template for creating **UI shell** repositories within the current AeroBeat v1 architecture.
+
+It should be read against the locked product direction from `aerobeat-docs`:
+
+- **Primary release target:** PC community first
+- **Official v1 gameplay features:** Boxing and Flow
+- **Official v1 gameplay input:** camera only
+- **UI input stance:** mouse and touch remain valid for UI navigation, without implying equal-status gameplay input support
+- **Future shell work:** mobile, web, and XR can remain future-facing shell variants when they are labeled honestly
 
 ## 📋 Repository Details
 
-*   **Type:** UI Shell
-*   **License:** **GNU GPLv3** (Strict Copyleft)
-*   **Dependencies:**
-    *   `aerobeat-ui-core` (Required UI logic contract)
-    *   `aerobeat-ui-kit-community` (Pinned visual layer)
-    *   Additional lane/core repos only when the shell actually consumes them
+- **Type:** UI Shell template
+- **License:** **GNU GPLv3** (Strict Copyleft)
+- **Dependency contract:**
+  - `aerobeat-ui-core` — required shared UI logic contract
+  - `aerobeat-ui-kit-community` — baseline community visual layer for template bootstrap
+  - additional lane/core repos only when the shell actually consumes them
 
 ## GodotEnv development flow
 
@@ -32,7 +40,7 @@ cd .testbed
 godotenv addons install
 ```
 
-That restores this repo's current dev/test manifest into `.testbed/addons/`. Canonically, UI shell repos should describe themselves around `aerobeat-ui-core` plus the concrete UI kit and any other lane repos the shell actually consumes.
+That restores this repo's current dev/test manifest into `.testbed/addons/`. Canonically, UI shell templates should keep the baseline manifest narrow: shared UI logic, the community UI kit, and test-only tooling.
 
 ### Open the workbench
 
@@ -42,7 +50,7 @@ From the repo root:
 godot --editor --path .testbed
 ```
 
-Use this `.testbed/` project as the canonical direct-development and bugfinding surface for UI-shell work.
+Use this `.testbed/` project as the canonical direct-development and bugfinding surface for UI-shell template work.
 
 ### Import smoke check
 
@@ -66,7 +74,7 @@ godot --headless --path .testbed --script addons/gut/gut_cmdln.gd \
 ### Validation notes
 
 - `.testbed/addons.jsonc` is the committed dev/test dependency contract.
-- The current manifest still pins the transition-era `aerobeat-core` package key alongside `aerobeat-ui-core` and `aerobeat-ui-kit-community`. Treat that old core pin as bootstrap-state drift rather than the canonical lane model.
-- Canonical shared dependency language for UI shell repos is `aerobeat-ui-core` plus the concrete UI kit and any additional lane repos the shell actually consumes.
-- Repo-local unit tests live under `.testbed/tests/`; this repo's current package payload is rooted at `/`, so the workbench does not ship a `.testbed/src` bridge for this subset.
+- The canonical template manifest for this repo is `aerobeat-ui-core` + `aerobeat-ui-kit-community` + `gut`.
+- If a concrete shell needs additional lane repos, add them intentionally rather than restoring a universal `aerobeat-core` baseline.
+- Repo-local unit tests live under `.testbed/tests/` and currently validate repo metadata plus the manifest contract.
 - The current package shape is consumed from the repo root (`subfolder: "/"`) for downstream installs.
